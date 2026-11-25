@@ -73,7 +73,7 @@ export default function PostCreate({ setPostList, setIsLoading, setIsOpenModal }
                     {errors.description && <p role="alert" className="text-red-500">{errors.description.message}</p>}
                 </div>
                 <div>
-                    <button className="bg-green-600 text-white px-3 py-1 rounded-md" disabled={isSubmitting}>Save</button>
+                    <button className="bg-green-600 text-white px-3 py-1 rounded-md" disabled={isSubmitting}>{isSubmitting ? 'Creating ...' : 'Create'}</button>
                 </div>
             </form>
         </div>

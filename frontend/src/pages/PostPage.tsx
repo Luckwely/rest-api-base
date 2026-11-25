@@ -6,6 +6,7 @@ import { FaTrash } from "react-icons/fa6";
 import { FaEdit } from "react-icons/fa";
 import Modal from "../components/modal";
 import PostCreate from "../components/posts/postCreate";
+import PostUpdate from "../components/posts/postUpdate";
 
 function formatDate(dateString: string) {
     return new Date(dateString).toLocaleDateString('fr-FR', {
@@ -18,6 +19,7 @@ function formatDate(dateString: string) {
 export default function PostPage() {
     const [postList, setPostList] = useState<Post[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [selectedPost, setSelectedPost] = useState<Post | null>(null);
 
     async function fetchAllPost() {
         const { posts } = await getAllPostApi();
@@ -35,6 +37,12 @@ export default function PostPage() {
 
     const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
     const openModal = () => {
+        setSelectedPost(null);
+        setIsOpenModal((old: boolean) => !old)
+    }
+
+    const openEdit = (post: Post) => {
+        setSelectedPost(post);
         setIsOpenModal((old: boolean) => !old)
     }
 
@@ -51,7 +59,7 @@ export default function PostPage() {
                 throw new Error("Error lors de la suppression");
             }
 
-            setPostList((old)=> old.filter((f) => f.id !== id))
+            setPostList((old) => old.filter((f) => f.id !== id))
         } catch (error) {
             console.log(error);
         }
@@ -69,8 +77,8 @@ export default function PostPage() {
                         {postList.map((post: Post) => (
                             <li key={post.id}>
                                 <div className="flex justify-end gap-2 items-center">
-                                    <button onClick={()=>handleDeletePost(post.id)}><FaTrash /></button>
-                                    <button><FaEdit /></button>
+                                    <button onClick={() => handleDeletePost(post.id)}><FaTrash /></button>
+                                    <button onClick={() => openEdit(post)}><FaEdit /></button>
                                 </div>
                                 <time dateTime={post.createdAt}>
                                     Publie le {formatDate(post.createdAt)}
@@ -81,9 +89,17 @@ export default function PostPage() {
                     </ul>
                 )}
 
+
             {isOpenModal && (
-                <Modal size="full" onClose={() => setIsOpenModal(false)}>
+                <Modal size="full" onClose={() => {setIsOpenModal(false); setSelectedPost(null);}}>
+                    {selectedPost ? (
+                        <PostUpdate post={selectedPost}  setPostList={setPostList} setIsLoading={setIsLoading} setIsOpenModal={setIsOpenModal} />
+                        
+
+                    ) : (
+
                     <PostCreate setPostList={setPostList} setIsLoading={setIsLoading} setIsOpenModal={setIsOpenModal} />
+                    )}
                 </Modal>
             )}
         </Container>
