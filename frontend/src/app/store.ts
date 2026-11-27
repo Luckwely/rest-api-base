@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import taskReducer from './features/taskSlice';
+import postReducer from './features/taskSlice';
 
 export const store = configureStore({
   reducer: {
-    tasks: taskReducer
+    tasks: taskReducer,
+    posts: postReducer
   }
 });
 

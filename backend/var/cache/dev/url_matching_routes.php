@@ -26,6 +26,7 @@ return [
         35 => [[['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null]],
         64 => [
             [['_route' => 'posts.delete', '_controller' => 'App\\Controller\\Api\\Posts\\DeletePostController'], ['id'], ['DELETE' => 0], null, false, true, null],
+            [['_route' => 'posts.show', '_controller' => 'App\\Controller\\Api\\Posts\\ShowPostController'], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => 'posts.update', '_controller' => 'App\\Controller\\Api\\Posts\\UpdatePostController'], ['id'], ['PUT' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

@@ -50,7 +50,11 @@ class PostRepository extends ServiceEntityRepository
         $this->getEntityManager()->flush();
 
         return $post;
+    }
 
+    public function findById(int $id): Post | Null
+    {
+        return $this->getEntityManager()->find(Post::class, $id);
     }
 
     //    /**

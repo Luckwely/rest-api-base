@@ -10,7 +10,9 @@ import type { FoodCart } from "../components/navigation";
 import { foodFaker } from "../data/data";
 import type { Food } from "../types/Food";
 import TaskPage from "../pages/TaskPage";
-import PostPage from "../pages/PostPage";
+import PostPage from "../pages/posts/PostPage";
+import PostShow from "../pages/posts/PostShow";
+
 
 
 export default function AppRouter() {
@@ -49,6 +51,9 @@ export default function AppRouter() {
           } />
           <Route path='/posts' element={
             <PostPage />
+          } />
+          <Route path='/posts/:id' element={
+            <PostShow />
           } />
         </Routes>
       </BrowserRouter>

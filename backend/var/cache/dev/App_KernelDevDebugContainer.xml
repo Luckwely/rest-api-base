@@ -238,6 +238,14 @@
         <argument type="service" id=".service_locator.TJNRSaV.App\Controller\Api\Posts\ListPostController"/>
       </call>
     </service>
+    <service id="App\Controller\Api\Posts\ShowPostController" class="App\Controller\Api\Posts\ShowPostController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\Api\Posts\ShowPostController"/>
+      </call>
+    </service>
     <service id="App\Controller\Api\Posts\UpdatePostController" class="App\Controller\Api\Posts\UpdatePostController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="routing.controller"/>
@@ -443,7 +451,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" priority="-50">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.9wzkpOU"/>
+      <argument type="service" id=".service_locator.fhxZZfS"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" priority="-100">controller.argument_value_resolver</tag>
@@ -1651,7 +1659,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.9wzkpOU"/>
+      <argument type="service" id=".service_locator.fhxZZfS"/>
     </service>
     <service id="debug.console.argument_resolver" class="Symfony\Component\Console\ArgumentResolver\TraceableArgumentResolver">
       <tag name="container.decorator" id="console.argument_resolver" inner="debug.console.argument_resolver.inner"/>
@@ -1726,6 +1734,7 @@
         <argument>App\Controller\Api\Posts\CreatePostController</argument>
         <argument>App\Controller\Api\Posts\DeletePostController</argument>
         <argument>App\Controller\Api\Posts\ListPostController</argument>
+        <argument>App\Controller\Api\Posts\ShowPostController</argument>
         <argument>App\Controller\Api\Posts\UpdatePostController</argument>
       </argument>
     </service>
@@ -2672,6 +2681,7 @@
         <argument>App\Controller\Api\Posts\CreatePostController</argument>
         <argument>App\Controller\Api\Posts\DeletePostController</argument>
         <argument>App\Controller\Api\Posts\ListPostController</argument>
+        <argument>App\Controller\Api\Posts\ShowPostController</argument>
         <argument>App\Controller\Api\Posts\UpdatePostController</argument>
         <argument>App\Dtos\CreatePostDto</argument>
         <argument>App\Entity\Post</argument>
@@ -3153,6 +3163,10 @@
         <argument>.instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Api\Posts\ListPostController</argument>
         <argument>.instanceof.App\Controller\Api\Posts\ListPostController.0.App\Controller\Api\Posts\ListPostController</argument>
         <argument>.abstract.instanceof.App\Controller\Api\Posts\ListPostController</argument>
+        <argument>.instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Api\Posts\ShowPostController</argument>
+        <argument>.instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Api\Posts\ShowPostController</argument>
+        <argument>.instanceof.App\Controller\Api\Posts\ShowPostController.0.App\Controller\Api\Posts\ShowPostController</argument>
+        <argument>.abstract.instanceof.App\Controller\Api\Posts\ShowPostController</argument>
         <argument>.instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Api\Posts\UpdatePostController</argument>
         <argument>.instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Api\Posts\UpdatePostController</argument>
         <argument>.instanceof.App\Controller\Api\Posts\UpdatePostController.0.App\Controller\Api\Posts\UpdatePostController</argument>
@@ -3211,9 +3225,10 @@
         <argument>.service_locator.f22fasr</argument>
         <argument>.service_locator.f22fasr.App\Controller\Api\Posts\DeletePostController::__invoke()</argument>
         <argument>.service_locator.f22fasr.App\Controller\Api\Posts\ListPostController::__invoke()</argument>
+        <argument>.service_locator.f22fasr.App\Controller\Api\Posts\ShowPostController::__invoke()</argument>
         <argument>.service_locator.vTDRgEC</argument>
         <argument>.service_locator.vTDRgEC.App\Controller\Api\Posts\UpdatePostController::__invoke()</argument>
-        <argument>.service_locator.9wzkpOU</argument>
+        <argument>.service_locator.fhxZZfS</argument>
         <argument>.service_locator.UoCFijZ</argument>
         <argument>.service_locator.nqEKT7G</argument>
         <argument>.debug.value_resolver.argument_resolver.request</argument>
@@ -3731,6 +3746,9 @@
         </argument>
         <argument key="ListPostController" type="collection">
           <argument>App\Controller\Api\Posts\ListPostController</argument>
+        </argument>
+        <argument key="ShowPostController" type="collection">
+          <argument>App\Controller\Api\Posts\ShowPostController</argument>
         </argument>
         <argument key="UpdatePostController" type="collection">
           <argument>App\Controller\Api\Posts\UpdatePostController</argument>
@@ -6051,6 +6069,10 @@
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Api\Posts\ListPostController" class="App\Controller\Api\Posts\ListPostController" autowire="true" abstract="true"/>
     <service id=".instanceof.App\Controller\Api\Posts\ListPostController.0.App\Controller\Api\Posts\ListPostController" class="App\Controller\Api\Posts\ListPostController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\Api\Posts\ListPostController" class="App\Controller\Api\Posts\ListPostController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Api\Posts\ShowPostController" class="App\Controller\Api\Posts\ShowPostController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Api\Posts\ShowPostController" class="App\Controller\Api\Posts\ShowPostController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\Api\Posts\ShowPostController.0.App\Controller\Api\Posts\ShowPostController" class="App\Controller\Api\Posts\ShowPostController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Api\Posts\ShowPostController" class="App\Controller\Api\Posts\ShowPostController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Api\Posts\UpdatePostController" class="App\Controller\Api\Posts\UpdatePostController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Api\Posts\UpdatePostController" class="App\Controller\Api\Posts\UpdatePostController" autowire="true" abstract="true"/>
     <service id=".instanceof.App\Controller\Api\Posts\UpdatePostController.0.App\Controller\Api\Posts\UpdatePostController" class="App\Controller\Api\Posts\UpdatePostController" autowire="true" abstract="true"/>
@@ -6558,6 +6580,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.f22fasr" method="withContext"/>
     </service>
+    <service id=".service_locator.f22fasr.App\Controller\Api\Posts\ShowPostController::__invoke()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Api\Posts\ShowPostController::__invoke()"/>
+      <argument>App\Controller\Api\Posts\ShowPostController::__invoke()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.f22fasr" method="withContext"/>
+    </service>
     <service id=".service_locator.vTDRgEC" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -6571,7 +6599,7 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.vTDRgEC" method="withContext"/>
     </service>
-    <service id=".service_locator.9wzkpOU" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.fhxZZfS" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.1vYpZ1B.kernel::registerContainerConfiguration()"/>
@@ -6581,6 +6609,7 @@
         <argument key="App\Controller\Api\Posts\CreatePostController::__invoke" type="service_closure" id=".service_locator.6EVqVER.App\Controller\Api\Posts\CreatePostController::__invoke()"/>
         <argument key="App\Controller\Api\Posts\DeletePostController::__invoke" type="service_closure" id=".service_locator.f22fasr.App\Controller\Api\Posts\DeletePostController::__invoke()"/>
         <argument key="App\Controller\Api\Posts\ListPostController::__invoke" type="service_closure" id=".service_locator.f22fasr.App\Controller\Api\Posts\ListPostController::__invoke()"/>
+        <argument key="App\Controller\Api\Posts\ShowPostController::__invoke" type="service_closure" id=".service_locator.f22fasr.App\Controller\Api\Posts\ShowPostController::__invoke()"/>
         <argument key="App\Controller\Api\Posts\UpdatePostController::__invoke" type="service_closure" id=".service_locator.vTDRgEC.App\Controller\Api\Posts\UpdatePostController::__invoke()"/>
         <argument key="kernel:registerContainerConfiguration" type="service_closure" id=".service_locator.1vYpZ1B.kernel::registerContainerConfiguration()"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.1vYpZ1B.kernel::loadRoutes()"/>
@@ -6590,6 +6619,8 @@
         <argument key="App\Controller\Api\Posts\DeletePostController" type="service_closure" id=".service_locator.f22fasr.App\Controller\Api\Posts\DeletePostController::__invoke()"/>
         <argument key="App\Controller\Api\Posts\ListPostController:__invoke" type="service_closure" id=".service_locator.f22fasr.App\Controller\Api\Posts\ListPostController::__invoke()"/>
         <argument key="App\Controller\Api\Posts\ListPostController" type="service_closure" id=".service_locator.f22fasr.App\Controller\Api\Posts\ListPostController::__invoke()"/>
+        <argument key="App\Controller\Api\Posts\ShowPostController:__invoke" type="service_closure" id=".service_locator.f22fasr.App\Controller\Api\Posts\ShowPostController::__invoke()"/>
+        <argument key="App\Controller\Api\Posts\ShowPostController" type="service_closure" id=".service_locator.f22fasr.App\Controller\Api\Posts\ShowPostController::__invoke()"/>
         <argument key="App\Controller\Api\Posts\UpdatePostController:__invoke" type="service_closure" id=".service_locator.vTDRgEC.App\Controller\Api\Posts\UpdatePostController::__invoke()"/>
         <argument key="App\Controller\Api\Posts\UpdatePostController" type="service_closure" id=".service_locator.vTDRgEC.App\Controller\Api\Posts\UpdatePostController::__invoke()"/>
       </argument>
@@ -6770,6 +6801,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.TJNRSaV" method="withContext"/>
     </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\Api\Posts\ShowPostController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Api\Posts\ShowPostController"/>
+      <argument>App\Controller\Api\Posts\ShowPostController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
     <service id=".service_locator.TJNRSaV.App\Controller\Api\Posts\UpdatePostController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Api\Posts\UpdatePostController"/>
       <argument>App\Controller\Api\Posts\UpdatePostController</argument>
@@ -6904,6 +6941,7 @@
           <argument>App\Controller\Api\Posts\CreatePostController</argument>
           <argument>App\Controller\Api\Posts\DeletePostController</argument>
           <argument>App\Controller\Api\Posts\ListPostController</argument>
+          <argument>App\Controller\Api\Posts\ShowPostController</argument>
           <argument>App\Controller\Api\Posts\UpdatePostController</argument>
           <argument>Doctrine\Bundle\DoctrineBundle\Controller\ProfilerController</argument>
         </argument>
@@ -7723,7 +7761,7 @@
     <service id="doctrine.orm.default_entity_manager.event_manager" alias="doctrine.dbal.default_connection.event_manager"/>
     <service id="doctrine.migrations.metadata_storage" alias="doctrine.migrations.storage.table_storage"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.ryAvHi4" public="true"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.9wzkpOU"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.fhxZZfS"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.W55Po6X"/>
     <service id="Psr\Log\LoggerInterface" alias="logger"/>
     <service id="event_dispatcher" alias="debug.event_dispatcher" public="true"/>

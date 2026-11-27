@@ -41,4 +41,13 @@ final class PostService
 
         return $this->postRepository->update($post, $data);
     }
+
+    public function findById(int $id): Post | null
+    {
+        if (!$id) {
+            return throw new NotFoundHttpException('Post introuvable');
+        }
+
+        return $this->postRepository->findById($id);
+    }
 }
